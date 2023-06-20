@@ -7,6 +7,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+// This generates a table in our database.
+// @Data creates the setters and getters.
+// @AllArgsConstructor creates a constructor using all arguments available.
+// @NoArgsConstructor creates a constructor with no arguments.
 @Entity
 @Table(name = "Notes")
 @Data
@@ -14,6 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Note {
 
+    // Below are the table columns.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,6 +31,7 @@ public class Note {
     @JsonBackReference
     private User user;
 
+    // Like the User class, this creates a new Note using the NoteDto (or a user's input).
     public Note (NoteDto notedto) {
         if (notedto.getBody() != null) {
             this.body = notedto.getBody();
