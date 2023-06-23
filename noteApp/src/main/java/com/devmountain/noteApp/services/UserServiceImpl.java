@@ -41,8 +41,9 @@ public class UserServiceImpl implements UserService {
         userRepository.saveAndFlush(user);
 
         // Then we add a string to our list to let the user know they were successful.
-        // Not sure why this needed to be a list at the moment of Project 3.
-        response.add("User Added Successfully!");
+        // Now that we are adding the front end, I see we need the response to be in the form of an array list for its easy format and because we may want to display more info later.
+        // In JS, this 'add' of ours will be [0] in our array.
+        response.add("http://localhost:8080/login.html");
 
         return response;
     }
@@ -67,10 +68,12 @@ public class UserServiceImpl implements UserService {
             // Checking to see if the password entered matches the username's password in our database.
             // If yes:
             if (passwordEncoder.matches(userDto.getPassword(), userOptional.get().getPassword())) {
-                response.add("User login was successful!");
+                // This will be [0] of our JS code when we reference it later.
+                response.add("http://localhost:8080/home.html");
 
                 // Adds the username's string value into our array list.
-                response.add(String.valueOf(userOptional.get().getUsername()));
+                // This will be [1]of our JS code when we reference it later.
+                response.add(String.valueOf(userOptional.get().getId()));
             } else {
                 response.add("Username or password is incorrect.");
             }

@@ -32,9 +32,9 @@ public class Note {
     private User user;
 
     // Like the User class, this creates a new Note using the NoteDto (or a user's input).
-    public Note (NoteDto notedto) {
-        if (notedto.getBody() != null) {
-            this.body = notedto.getBody();
+    public Note (NoteDto noteDto) {
+        if (noteDto.getBody() != null) {
+            this.body = noteDto.getBody();
         }
     }
 }
