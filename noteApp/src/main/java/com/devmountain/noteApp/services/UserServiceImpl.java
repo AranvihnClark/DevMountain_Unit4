@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * This is to check if the user's credentials are correct.
+     * If user login is correct, pushes the user into the homepage and tracks user action via a cookie.
      *
      * @param userDto the inputted user info to check if they exist in our database.
      * @return a string based on whether the userDto matches a user in our database.
